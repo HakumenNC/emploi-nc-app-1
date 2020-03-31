@@ -5,7 +5,7 @@ jobs:
     name: Build APK
     runs-on: ubuntu-latest
     steps:
-    - uses: "finnp/create-file-action@master"
+    - uses: "finnp/create-file-action@1.0.0"
       env:
         FILE_NAME: "lib/app_config.dart"
         FILE_DATA: "const apiKey = \"79c647398fmsh9cfc1d1b1c29182p1c37bajsn21ec70f25873\";"
