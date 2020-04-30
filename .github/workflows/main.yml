@@ -3,9 +3,6 @@ name: Test, Build and Release apk
 jobs:
   build:
     name: Build APK
-    env:
-      JAVA_VERSION: '12.x'
-      FLUTTER_VERSION: '1.12.13+hotfix.8'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -13,17 +10,18 @@ jobs:
       env:
         FILE_NAME: "lib/app_config.dart"
         FILE_DATA: "const apiKey = \"${{ secrets.RAPIDAPI_KEY }}\";"
-    - run: echo $JAVA_VERSION
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
     - uses: subosito/flutter-action@v1
       with:
-        flutter-version: $FLUTTER_VERSION
+        flutter-version: '1.12.13+hotfix.8'
     - run: flutter pub get
-    - run: flutter build apk --debug --split-per-abi
-    - name: Create a Release APK
+    - run: flutter build apk --debug
+    - name: Upload to AWS S3
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "build/app/outputs/apk/debug/*.apk"
-        token: ${{ secrets.TOKEN }}
+        aws_key_id: ${{ secrets.AWS_KEY }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET }}
+        aws_bucket: ${{ secrets.AWS_BUCKET }}
+        source_dir: 'build/app/outputs/apk/debug'
