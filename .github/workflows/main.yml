@@ -9,7 +9,7 @@ jobs:
     - uses: "finnp/create-file-action@1.0.0"
       env:
         FILE_NAME: "lib/app_config.dart"
-        FILE_DATA: "const apiKey = \"79c647398fmsh9cfc1d1b1c29182p1c37bajsn21ec70f25873\";"
+        FILE_DATA: "const apiKey = \"" + ${{ secrets.RAPIDAPI_KEY }} + "\";"
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
