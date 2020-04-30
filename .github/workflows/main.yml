@@ -1,11 +1,11 @@
 on: push
 name: Test, Build and Release apk
 jobs:
-  env:
-    JAVA_VERSION: '12.x'
-    FLUTTER_VERSION: '1.12.13+hotfix.8'
   build:
     name: Build APK
+    env:
+      JAVA_VERSION: '12.x'
+      FLUTTER_VERSION: '1.12.13+hotfix.8'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
