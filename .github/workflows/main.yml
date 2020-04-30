@@ -1,8 +1,8 @@
 on: push
 name: Test, Build and Release apk
 env:
-  JAVA_VERSION: 12.x
-  FLUTTER_VERSION: 1.12.13+hotfix.8
+  JAVA_VERSION: '12.x'
+  FLUTTER_VERSION: '1.12.13+hotfix.8'
 jobs:
   build:
     name: Build APK
