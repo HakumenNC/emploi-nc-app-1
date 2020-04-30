@@ -1,5 +1,4 @@
-echo "::set-env name=JAVA_VERSION::12.x"
-
+::set-env name=JAVA_VERSION::12.x
 
 on: push
 name: Test, Build and Release apk
