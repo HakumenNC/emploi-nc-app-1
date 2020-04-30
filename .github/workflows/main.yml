@@ -10,6 +10,7 @@ jobs:
       env:
         FILE_NAME: "lib/app_config.dart"
         FILE_DATA: "const apiKey = \"${{ secrets.RAPIDAPI_KEY }}\";"
+    - run: echo "const apiKey = \"${{ secrets.RAPIDAPI_KEY }}\";"
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
